@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LEGAL EVIDENCE DOSSIER & NOTEBOOK REPOSITORY — DR. ANN VERMA, M.D.</title>
+  <title>LEGAL EVIDENCE DOSSIER & COMPLETE NOTEBOOKLM REPOSITORY — DR. ANN VERMA, M.D.</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
   <style>
     :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --border: #334155;
+      --bg: #0b0f19;
+      --card-bg: #151d30;
+      --border: #24324f;
       --primary: #38bdf8;
       --accent: #f43f5e;
+      --purple: #a855f7;
+      --green: #10b981;
       --text: #f8fafc;
       --text-muted: #94a3b8;
-      --code-bg: #020617;
+      --code-bg: #030712;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -23,133 +27,70 @@
       line-height: 1.6;
       padding: 24px;
     }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .container { max-width: 1300px; margin: 0 auto; }
     header {
       background: linear-gradient(135deg, #1e293b, #0f172a);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 32px;
-      margin-bottom: 32px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      margin-bottom: 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     }
-    h1 {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    h1 { font-size: 2.1rem; color: var(--primary); margin-bottom: 8px; }
     .badge {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--primary);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      display: inline-block; padding: 4px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700;
+      background: rgba(56, 189, 248, 0.15); color: var(--primary); border: 1px solid rgba(56, 189, 248, 0.3); margin-right: 8px;
     }
-    .badge-alert {
-      background: rgba(244, 63, 94, 0.15);
-      color: var(--accent);
-      border: 1px solid rgba(244, 63, 94, 0.3);
-    }
+    .badge-alert { background: rgba(244, 63, 94, 0.15); color: var(--accent); border-color: rgba(244, 63, 94, 0.3); }
+    .badge-purple { background: rgba(168, 85, 247, 0.15); color: var(--purple); border-color: rgba(168, 85, 247, 0.3); }
+    .badge-green { background: rgba(16, 185, 129, 0.15); color: var(--green); border-color: rgba(16, 185, 129, 0.3); }
+    
     .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 20px;
     }
     .meta-item {
-      background: rgba(15, 23, 42, 0.6);
-      padding: 16px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
+      background: rgba(11, 15, 25, 0.7); padding: 14px 18px; border-radius: 8px; border: 1px solid var(--border);
     }
-    .meta-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-      margin-bottom: 4px;
-    }
-    .meta-val {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #fff;
-    }
-    .nav-tabs {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
+    .meta-label { font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em; }
+    .meta-val { font-size: 1rem; font-weight: 600; color: #fff; margin-top: 2px; }
+
+    .nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
     .tab-btn {
-      background: var(--card-bg);
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-      padding: 12px 24px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
+      background: var(--card-bg); color: var(--text-muted); border: 1px solid var(--border);
+      padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95rem;
       transition: all 0.2s ease;
     }
     .tab-btn:hover, .tab-btn.active {
-      background: var(--primary);
-      color: #0f172a;
-      border-color: var(--primary);
+      background: var(--primary); color: #0b0f19; border-color: var(--primary);
     }
     .tab-pane {
-      display: none;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 32px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+      display: none; background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
     }
-    .tab-pane.active {
-      display: block;
+    .tab-pane.active { display: block; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; margin-top: 20px; }
+    .card {
+      background: #0d1322; border: 1px solid var(--border); border-radius: 10px; padding: 24px;
     }
+    .card h3 { color: var(--primary); margin-bottom: 12px; font-size: 1.25rem; }
+    .card h4 { color: var(--purple); margin: 16px 0 8px; font-size: 1rem; }
+    .card p, .card li { color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; }
+    .card ul { margin-left: 20px; margin-top: 6px; }
+
     pre {
-      background: var(--code-bg);
-      color: #e2e8f0;
-      padding: 24px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      overflow-x: auto;
-      white-space: pre-wrap;
-      word-break: break-word;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.9rem;
-      line-height: 1.6;
+      background: var(--code-bg); color: #e2e8f0; padding: 20px; border-radius: 8px;
+      border: 1px solid var(--border); overflow-x: auto; white-space: pre-wrap; word-break: break-word;
+      font-family: ui-monospace, Menlo, Monaco, Consolas, monospace; font-size: 0.88rem; line-height: 1.6;
     }
     .btn-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #0284c7;
-      color: white;
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      margin-top: 16px;
+      display: inline-flex; align-items: center; gap: 8px; background: #0284c7; color: white;
+      text-decoration: none; padding: 10px 18px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
       transition: background 0.2s;
     }
-    .btn-action:hover {
-      background: #0369a1;
-    }
-    iframe {
-      width: 100%;
-      height: 850px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fff;
-    }
+    .btn-action:hover { background: #0369a1; }
+    iframe { width: 100%; height: 850px; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
+    .mermaid { background: #030712; padding: 20px; border-radius: 8px; border: 1px solid var(--border); margin-top: 16px; }
   </style>
 </head>
 <body>
@@ -157,12 +98,13 @@
     <header>
       <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
         <div>
-          <h1>LEGAL FORENSIC DOSSIER & REPOSITORY</h1>
-          <p style="color: var(--text-muted); font-size: 1.1rem;">Cumis E&O Leverage, NPI Credential Protection & Strategic Legal Playbook</p>
+          <h1>LEGAL FORENSIC & NOTEBOOKLM STUDIO REPOSITORY</h1>
+          <p style="color: var(--text-muted); font-size: 1.05rem;">Cumis E&O Surety Leverage • Studio Mind Maps • Audio Overviews • 44 Artifacts (308 Sources)</p>
         </div>
         <div>
-          <span class="badge">EVIDENCE VERIFIED</span>
-          <span class="badge badge-alert">CONFIDENTIAL ATTORNEY-CLIENT WORK PRODUCT</span>
+          <span class="badge badge-green">44 STUDIO ARTIFACTS HOSTED</span>
+          <span class="badge badge-purple">3 MIND MAPS INCLUDED</span>
+          <span class="badge badge-alert">CONFIDENTIAL EVIDENCE</span>
         </div>
       </div>
 
@@ -172,29 +114,132 @@
           <div class="meta-val">Dr. Ann Prema Verma, M.D.</div>
         </div>
         <div class="meta-item">
-          <div class="meta-label">Credentials</div>
+          <div class="meta-label">Medical Credentials</div>
           <div class="meta-val">NPI: 1902152242 | CA Lic: A155456</div>
         </div>
         <div class="meta-item">
-          <div class="meta-label">Primary Judicial Venues</div>
+          <div class="meta-label">Judicial Venues</div>
           <div class="meta-val">LASC Cases: 26SMCV03161 & 26SMUD01464</div>
         </div>
         <div class="meta-item">
-          <div class="meta-label">Subject Locus</div>
-          <div class="meta-val">1133 N Formosa Ave #5, West Hollywood</div>
+          <div class="meta-label">NotebookLM Audio Overview Status</div>
+          <div class="meta-val">43:49 Deep Dive (In Studio Index)</div>
         </div>
       </div>
     </header>
 
     <div class="nav-tabs">
-      <button class="tab-btn active" onclick="openTab('dossier')">1. Master Legal Dossier & Playbook</button>
-      <button class="tab-btn" onclick="openTab('notebook')">2. Live Exported Gemini Notebook (Full UI)</button>
-      <button class="tab-btn" onclick="openTab('fabrication')">3. Suresh Verma Persona Disproof</button>
-      <button class="tab-btn" onclick="openTab('npi')">4. CMS Federal NPI Record</button>
+      <button class="tab-btn active" onclick="openTab('mindmaps')">1. Studio Mind Maps & Visual Strategies</button>
+      <button class="tab-btn" onclick="openTab('studio-index')">2. Complete Studio Artifact Catalog (44 Items)</button>
+      <button class="tab-btn" onclick="openTab('dossier')">3. Master Legal Dossier & Playbook</button>
+      <button class="tab-btn" onclick="openTab('notebook')">4. Live Interactive NotebookLM (308 Sources)</button>
+      <button class="tab-btn" onclick="openTab('fabrication')">5. Suresh Verma Identity Disproof</button>
+      <button class="tab-btn" onclick="openTab('npi')">6. CMS Federal NPI Record</button>
     </div>
 
-    <!-- TAB 1: MASTER DOSSIER -->
-    <div id="dossier" class="tab-pane active">
+    <!-- TAB 1: STUDIO MIND MAPS -->
+    <div id="mindmaps" class="tab-pane active">
+      <h2>Interactive Studio Mind Maps (Visualized Directly from NotebookLM Studio)</h2>
+      <p style="color: var(--text-muted); margin-bottom: 20px;">These interactive mind maps structure the 4-phase entrapment, insurance leverage flip, and financial siphoning schemes.</p>
+      
+      <div class="card-grid">
+        <div class="card">
+          <h3>1. Insurance Strategy Mind Map (Cumis & Surety Counter-Attack)</h3>
+          <p>Maps the strategic leverage flipping defense obligations from the doctor onto the bad-faith landlord and restricted broker.</p>
+          <div class="mermaid">
+graph TD
+    DOC["Dr. Ann Verma, M.D.<br>(NPI: 1902152242)"] -->|"1. Conflict Identified"| CUMIS["Demand Cumis Counsel<br>(Cal. Civ. Code § 2860)"]
+    CUMIS -->|"Carrier Pays 100%"| INDEP["Independent Defense Counsel"]
+    DOC -->|"2. Evidence Transmittal"| SIU["Insurers' & Sureties' SIUs<br>(Special Investigation Units)"]
+    SIU -->|"3. Joint Defense Accord"| JDA["Joint Defense Accord (JDA)"]
+    JDA -->|"4. Subrogation Reversal"| REVERSE["Reverse-Underwriting Package"]
+    REVERSE -->|"5. Treble Damages"| RICO["Rule 14 Third-Party Civil RICO<br>(18 U.S.C. § 1964)"]
+    RICO --> ENT["Target Enterprise:<br>Falk, Alvarado, Nest Seekers"]
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>2. Credential Hijacking & Straw Provider Siphoning Mind Map</h3>
+          <p>Mathematical proof of the NPI = 4.02 Non-Profiteers Index and 90% overhead siphoning.</p>
+          <div class="mermaid">
+graph LR
+    SUB["Doctor's NPI / Credentials"] -->|"Fronts Lease-Option & Grants"| OP["Target Enterprise"]
+    OP -->|"Gross Revenue"| BANK["Accounts Controlled by Syndicate"]
+    BANK -->|"90% Siphoned"| MSO["MSO Fees & Fake Labor<br>(Form 1120 Line 26 / 1125-A)"]
+    BANK -->|"&lt;10% Allowed"| PRACT["Direct Practice Delivery"]
+    MSO -->|"Engineered Default"| SQUEEZE["3-Month Liquidity Trap"]
+    SQUEEZE -->|"Retaliatory Action"| EVICT["Summary Eviction Weaponization<br>(LASC 26SMUD01464)"]
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 24px;">
+        <h3>3. Orange County & Municipal Entrapment Mind Map</h3>
+        <p>Integrates the broader municipal public works contracts, surety bond requirements (Cal. Gov. Code § 1480), and void ab initio contract nullification.</p>
+        <div class="mermaid">
+graph TD
+    MUNI["Municipal Public Works & Housing"] -->|"Mandatory Bond"| SURETY["Surety Performance Bonds<br>(Cal. Civil Code § 9550 / 31 U.S.C. § 3131)"]
+    SURETY -->|"Breach of Duty / Fraud"| CLAIM["Direct Bond Underwriter Claim"]
+    CLAIM -->|"Illegal Contracts"| VOID["Void Ab Initio (Thomson v. Call)<br>100% Disgorgement Mandate"]
+    VOID --> DISMISS["Mandatory Sua Sponte Court Dismissal"]
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: STUDIO ARTIFACT CATALOG -->
+    <div id="studio-index" class="tab-pane">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2>Complete NotebookLM Studio Artifact Catalog (44 Items)</h2>
+        <span class="badge badge-purple">AUDIO OVERVIEW &amp; ALL STUDIO OUTPUTS</span>
+      </div>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Every studio artifact generated inside NotebookLM has been indexed from the master export session:</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <h4>Studio Audio Overviews & Deep Dives</h4>
+          <ul>
+            <li><strong>Disney Dollars and Orange County Bankruptcy:</strong> 43:49 Duration · Deep Dive Audio Overview (251 Sources)</li>
+            <li><strong>Producer Notes Ready:</strong> Studio synthesis notes for audio generation</li>
+          </ul>
+          <h4>Interactive Mind Maps</h4>
+          <ul>
+            <li><strong>Insurance Strategy Mind Map:</strong> 5 sources · Strategic Cumis flip</li>
+            <li><strong>Disney Dollars Mind Map:</strong> 254 sources · Derivative & municipal financial flow</li>
+            <li><strong>Orange County Mind Map:</strong> 181 sources · Historical & zoning analysis</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Legal Defense & Playbook Artifacts</h4>
+          <ul>
+            <li><strong>Forensic Legal Playbook:</strong> Reverse-Underwriting, Cumis Counsel, Civil RICO & JDA Strategy (58 sources)</li>
+            <li><strong>Action Report & Playbook:</strong> Execution directives</li>
+            <li><strong>RICO Settlement Memo:</strong> Executive summary settlement memorandum</li>
+            <li><strong>Civil RICO Complaint:</strong> Federal Rule 14 third-party complaint structure</li>
+            <li><strong>Joint Defense Accord (JDA):</strong> Insurer/surety SIU alliance framework</li>
+            <li><strong>Subpoena Duces Tecum:</strong> Two-tier protective order (AEO) subpoenas</li>
+            <li><strong>Reverse-Underwriting Demand Letter Templates:</strong> Medical & Contracting E&O</li>
+            <li><strong>Protective Order Framework & Strategy:</strong> Strict evidentiary quarantine</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>NPI & Forensic Financial Artifacts</h4>
+          <ul>
+            <li><strong>NPI Forensic Calculator:</strong> Mathematical proof of siphoning</li>
+            <li><strong>npi_risk_summary.png & npi_forensic_results.csv:</strong> Quantitative data runs</li>
+            <li><strong>nonprofit_npi_evaluation.csv & Nonprofit Risk Evaluation:</strong> Risk audits</li>
+            <li><strong>Forensic Tax Clauses:</strong> Form 1099 credential hijacking disclaimers</li>
+            <li><strong>Turning Insurers Into Allies:</strong> Reverse-underwriting defense guide</li>
+            <li><strong>Weaponized Insurance Fraud:</strong> Defense against bad-faith carriers</li>
+            <li><strong>Forensic Evidentiary Index & Legal Records Subpoena:</strong> Master court exhibits</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: MASTER DOSSIER -->
+    <div id="dossier" class="tab-pane">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h2>Forensic Strategy & Cumis Leverage Analysis</h2>
         <a href="DR_ANN_VERMA_CUMIS_EO_SURETY_DOSSIER.md" download class="btn-action">Download Markdown Dossier</a>
@@ -277,7 +322,7 @@ All underlying raw exports, transcripts, and dossiers are permanently indexed an
 </pre>
     </div>
 
-    <!-- TAB 2: LIVE NOTEBOOK -->
+    <!-- TAB 4: LIVE NOTEBOOK -->
     <div id="notebook" class="tab-pane">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h2>Full Interactive NotebookLM Interface (308 Sources)</h2>
@@ -286,7 +331,7 @@ All underlying raw exports, transcripts, and dossiers are permanently indexed an
       <iframe src="notebook.html"></iframe>
     </div>
 
-    <!-- TAB 3: FABRICATION -->
+    <!-- TAB 5: FABRICATION -->
     <div id="fabrication" class="tab-pane">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h2>OSINT Audit: Fictitious Father Persona Investigation</h2>
@@ -384,7 +429,7 @@ In the procedural architecture of LASC Case Nos. `26SMUD01464` and `26SMCV03161`
 </pre>
     </div>
 
-    <!-- TAB 4: NPI JSON -->
+    <!-- TAB 6: NPI JSON -->
     <div id="npi" class="tab-pane">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h2>Official CMS NPPES NPI Registry Record</h2>
